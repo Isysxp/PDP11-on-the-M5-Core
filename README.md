@@ -34,7 +34,21 @@ the console telnet session. In general, it is a good idea to test your disk imag
 To add a new image, make sure that the the extension is either .RK05 for RK boot or .RL02 for an RL01/2 boot. This extension and the file
 size are used to determine if the image is an RL01, RL02 or RK11 and to select the correct bootstrap. NB the emulation is a PDP11/40 with 18 bit addressing
 and only kernel and user space. It will not run 22 bit OSs or those that need I/D mapping etc. However, it will run RSX11/M 4.6 and RSTS/E V9 which
-were still used in the early 90's. I have included an RK image of Unix V6 (type unix at the @ prompt) and it supports a a second user via telnet to port 23.
+were still used in the early 90's. In the images directory is an RT11 V5 image to run Multi-user Basic. The defualt boot is to the SJ monitor.<br>
+To give this a try:<br>
+.r mubas
+
+WARNING: DATE NOT SET
+
+
+MU BASIC-11/RT-11 V2.00R
+CONFIGURATION FILE : *2USER
+MU BASIC-11/RT-11 IS OPERATIONAL.
+PLEASE TYPE IN "HELLO".
+
+and <br>
+The last 2 lines as above will apear in the telnet port 23 window and you are now runnning 2 user Basic.<br>
+I have included an RK image of Unix V6 (type unix at the @ prompt) and it supports a a second user via telnet to port 23.
 Login with root or if you really think you can cut it ... with ken!!!!<br>
 
 Have fun,<br>
