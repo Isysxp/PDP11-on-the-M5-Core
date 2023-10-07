@@ -1,0 +1,24 @@
+{
+  "serverLaunchTimeout": 5000,
+  "filterStdout": false,
+  "filterStderr": true,
+  "targetArchitecture": "arm",
+  "stopAtEntry": false,
+  "externalConsole": false,
+  "MIMode": "gdb",
+  "MIDebuggerServerAddress": "localhost:3333",
+  "cwd": "$(buildPath)",
+  "MIDebuggerPath": "C:\\Espressif\\frameworks\\esp-idf-v5.0.1\\tools\\tools\\xtensa-esp32-elf\\esp-2022r1-11.2.0\\xtensa-esp32-elf\\bin\\xtensa-esp32-elf-gdb.exe",
+  "MIDebuggerArgs": "",
+  "debugServerPath": "C:\\Espressif\\frameworks\\esp-idf-v5.0.1\\tools\\tools\\openocd-esp32\\v0.11.0-esp32-20221026\\openocd-esp32\\bin\\openocd.exe",
+  "debugServerArgs": "-d2 -s \"C:\\Espressif\\frameworks\\esp-idf-v5.0.1\\tools\\tools\\openocd-esp32\\v0.11.0-esp32-20221026\\openocd-esp32\\share\\openocd/scripts\" -f board/esp32-wrover-kit-1.8v.cfg -c \"init ; reset halt\"",
+  "program": "$(program)",
+  "logging": {
+    "moduleLoad": false,
+    "trace": false,
+    "engineLogging": false,
+    "programOutput": false,
+    "exceptions": false,
+    "traceResponse": false
+  }
+}

@@ -1,0 +1,24 @@
+# ESP32_11_SD build property overrides
+#
+
+
+
+
+## GDB:     Example...
+##          Arduino compatible GDB build variables can be used in conjunction with an optional debugger_launch.json
+##		    vNicro supports these settings as variables using the same as the microsoft mi json spec. 
+##				for example:- $(debugServerPath) is the full ocd exe file name and path
+##			Remove the # to activate these settings. This one variation of gdb + opencd as an example
+##			Actual settings might differ for the various hardware.
+##          Use 'vMicro>Compiler>Show Build Properties' to see existing build properties to assist
+##
+
+#debug.tool=gdb
+#tools.gdb.pre_init.tool=openocd
+#tools.gdb.cmd=arm-none-eabi-gdb.exe
+#tools.gdb.path={runtime.tools.arm-none-eabi-gcc.path}/bin
+#tools.gdb.pattern="{path}/{cmd}" -interpreter=mi -d "{build.project_path}"
+#tools.gdb.openocd.cmd=bin-64/openocd.exe
+#tools.gdb.openocd.path={runtime.vm.ide.tools.openocd.path}
+#tools.gdb.openocd.params.verbose=-d2
+#tools.gdb.openocd.args={params.verbose} -s"{path}/scripts/" -f "board/your_OCD_BOARD.cfg"
