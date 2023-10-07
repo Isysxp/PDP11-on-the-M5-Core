@@ -94,7 +94,8 @@ void setup() {
 	}
 	Serial.println("Startup.....");
 	if (!SD.begin()) {
-		Serial.println("Card Mount Failed");
+		Serial.println("SD Card mount failed.....");
+		M5.Lcd.print("SD Card mount failed.....");
 		while (1);
 	}
 	M5.Lcd.setBrightness(200);
@@ -139,8 +140,8 @@ void setup() {
 	else
 	{
 		M5.Lcd.fillRect(10, 105, 310, 20, BLACK);
-		strcpy(rkfile, "/rtv4_rk.dsk");
-		strcpy(rlfile, "/RT115.RL02");
+		strcpy(rkfile, "/Empty_RK05.dsk");
+		strcpy(rlfile, "/Empty_RL01.dsk");
 		M5.Lcd.setCursor(10, 120);
 		M5.Lcd.print("Boot: ");
 		M5.Lcd.print(Fnames[SelFile].c_str());
