@@ -41,10 +41,10 @@ To give this a try:<br>
 WARNING: DATE NOT SET
 
 
-MU BASIC-11/RT-11 V2.00R
-CONFIGURATION FILE : *2USER
-MU BASIC-11/RT-11 IS OPERATIONAL.
-PLEASE TYPE IN "HELLO".
+MU BASIC-11/RT-11 V2.00R<br>
+CONFIGURATION FILE : *2USER<br>
+MU BASIC-11/RT-11 IS OPERATIONAL.<br>
+PLEASE TYPE IN "HELLO".<br>
 
 and <br>
 The last 2 lines as above will apear in the telnet port 23 window and you are now runnning 2 user Basic.<br>
