@@ -10,7 +10,7 @@ can be charged from the USB socket. This will run your whole datacentre for some
   The PDP11/40 emulation includes 124 KW of RAM, an FP11 floating point unit, the EIS instruction set,
 a DL11 console serial port, an RL01/2 drive, an RK11 drive and a KL11 serial interface. It will run a number of DEC operating systems
 including Unix V6, RT11, RSX11/M and RSTS. The disk images which are SIMH compatible are stored on the SD card and selected via the touch screen.
-The console KL11 and the DL11 may be acceessed via telnet to port 2000 for the console and 23 for the DL11.<br><br>
+The console KL11 and the DL11 may be acceessed via telnet to port 2000 for the console and 23 for the DL11.The app will register the name M5PDP11 in your router.<br><br>
    The app can be built via the Arduino IDE and requires a number of extra libraries as below:<br>
 Using library M5Core2 version 0.1.7 in folder "file:///c:/Users/iansc/Documents/Arduino/libraries/M5Core2"
 Using library Wire version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/Wire"
@@ -23,10 +23,11 @@ Using library ESP_Telnet version 2.1.2 in folder "file:///c:/Users/iansc/Documen
 Using library WiFi version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFi"
 Using library HTTPClient version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/HTTPClient"
 Using library WiFiClientSecure version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFiClientSecure"<br>
-Finally, add all of the files in the /images directory to the root of a FAT32 formatted SD Card.
+Add all of the files in the /images directory to the root of a FAT32 formatted SD Card.
+Before bulding the app, open ESP_Telnet.cpp and change the SSID and PSWD data to match your router.<br>
 <br><br>
-  First, use the 'Select' button to select the image you wish to boot. At this point it is a good idea to telnet to port 2000 to connect to the console terminal.
-Then, click the 'Boot' button and the console should show that the selected OS has booted. The 'Reset' button does a hadr reset of the ESP32 which will
+  First, use the 'Select' button to select the image you wish to boot. At this point it is a good idea to telnet to M5PDP11/port 2000 to connect to the console terminal.
+Then, click the 'Boot' button and the console should show that the selected OS has booted. The 'Reset' button does a hard reset of the ESP32 which will
 disconnect all of the network links to starts over. NB is you are running an old Unix, do sync a lot before doing this! If the PDP11 halts, this will also
 cause a hard reset. <br>
   To find out what is happening, connect a terminal to the USB port (I use Teraterm) and this will generate some more output and act in parallel with
@@ -34,8 +35,8 @@ the console telnet session. In general, it is a good idea to test your disk imag
 To add a new image, make sure that the the extension is either .RK05 for RK boot or .RL02 for an RL01/2 boot. This extension and the file
 size are used to determine if the image is an RL01, RL02 or RK11 and to select the correct bootstrap. NB the emulation is a PDP11/40 with 18 bit addressing
 and only kernel and user space. It will not run 22 bit OSs or those that need I/D mapping etc. However, it will run RSX11/M 4.6 and RSTS/E V9 which
-were still used in the early 90's. In the images directory is an RT11 V5 image to run Multi-user Basic. The defualt boot is to the SJ monitor.<br>
-To give this a try:<br>
+were still used in the early 90's. In the images directory is an RT11 V5 image to run Multi-user Basic (New_RT11_5_XM.RL01). The default boot is to the SJ monitor.<br>
+To give this a try, connect to the 2 telnet ports (23 and 2000), select the image as above, press 'Boot'<br>
 .r mubas
 
 WARNING: DATE NOT SET
