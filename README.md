@@ -46,10 +46,9 @@ CONFIGURATION FILE : *2USER<br>
 MU BASIC-11/RT-11 IS OPERATIONAL.<br>
 PLEASE TYPE IN "HELLO".<br>
 
-and <br>
-The last 2 lines as above will apear in the telnet port 23 window and you are now runnning 2 user Basic.<br>
-I have included an RK image of Unix V6 (type unix at the @ prompt) and it supports a a second user via telnet to port 23.
-Login with root or if you really think you can cut it ... with ken!!!!<br>
+And, he last 2 lines as above will apear in the telnet port 23 window and you are now runnning 2 user Basic.<br>
+I have also included an RK image of Unix V6 (type unix at the @ prompt) and it supports a a second user via telnet to port 23.
+Login with root or if you really think you can cut it ... with ken!!!! Also, look in the /user directory.<br>
 
 Have fun,<br>
 Ian Schofield
