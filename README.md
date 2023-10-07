@@ -2,7 +2,8 @@
 
   This application is based upon the Pico 1140 project (https://github.com/Isysxp/Pico_1140) which implements a reasonable emulation
 of a DEC PDP11/40 processor with RK11 and RL01/2 disk drives. The idea was to shrink what used to be an entire rack full of stuff
-into a tiny box that can be lost behind the console terminal. (See photgraph) The M5Core2 module from M5Stack
+into a tiny box that can be lost behind the console terminal. (See photgraph: https://photos.google.com/photo/AF1QipPFVmZxG_FcibzDAUMDVP4PwSy7cSt0lIZ5ATov)
+The M5Core2 module from M5Stack
 (https://shop.m5stack.com/products/m5stack-core2-esp32-iot-development-kit) is a remarkable system containing an ESP32 with 4Mb PSRAM,
 a 320x240 touch screen TFT, an SD Card and a number of other interesting devices. It also has its own internal Lithium cell that
 can be charged from the USB socket. This will run your whole datacentre for some hours!!!! <br>
