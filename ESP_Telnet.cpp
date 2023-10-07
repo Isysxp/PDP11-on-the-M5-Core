@@ -5,7 +5,7 @@
 /* ------------------------------------------------- */
 
 #define SERIAL_SPEED  115200
-#define INFRA_SSID    "<Your-SSID"
+#define INFRA_SSID    "Your-SSID"
 #define INFRA_PSWD    "Your-Password"
 //const char noecho[]={0xFF,0xFD,0x2D,0}; // IAC DO SUPPRESS-LOCAL-ECHO Required for Windows telnet client.
 const uint8_t noecho[]={0xFF,0xFB,0x01,0};   // IAC WILL ECHO Seems to work for most clients
