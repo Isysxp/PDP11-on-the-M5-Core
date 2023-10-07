@@ -11,7 +11,7 @@ can be charged from the USB socket. This will run your whole datacentre for some
 a DL11 console serial port, an RL01/2 drive, an RK11 drive and a KL11 serial interface. It will run a number of DEC operating systems
 including Unix V6, RT11, RSX11/M and RSTS. The disk images which are SIMH compatible are stored on the SD card and selected via the touch screen.
 The console KL11 and the DL11 may be acceessed via telnet to port 2000 for the console and 23 for the DL11.<br>
-   The app can be built via the Arduino IDE and requires a number of extra libraries as below:
+   The app can be built via the Arduino IDE and requires a number of extra libraries as below:<br>
 Using library M5Core2 version 0.1.7 in folder "file:///c:/Users/iansc/Documents/Arduino/libraries/M5Core2"
 Using library Wire version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/Wire"
 Using library SPI version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/SPI"
@@ -22,7 +22,7 @@ Using library ESP32Time version 2.0.1 in folder "file:///c:/Users/iansc/Document
 Using library ESP_Telnet version 2.1.2 in folder "file:///c:/Users/iansc/Documents/Arduino/libraries/ESP_Telnet"
 Using library WiFi version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFi"
 Using library HTTPClient version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/HTTPClient"
-Using library WiFiClientSecure version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFiClientSecure"
+Using library WiFiClientSecure version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFiClientSecure"<br>
 Finally, add all of the files in the /images directory to the root of a FAT32 formatted SD Card.
 <br>
   First, use the 'Select' button to select the image you wish to boot. At this point it is a good idea to telnet to port 2000 to connect to the console terminal.
@@ -37,6 +37,6 @@ and only kernel and user space. It will not run 22 bit OSs or those that need I/
 were still used in the early 90's. I have included an RK image of Unix V6 (type unix at the @ prompt) and it supports a a second user via telnet to port 23.
 Login with root or if you really think you can cut it ... with ken!!!!<br>
 
-Have fun,
+Have fun,<br>
 Ian Schofield
 October 2013
