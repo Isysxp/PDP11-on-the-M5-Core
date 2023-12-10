@@ -22,7 +22,8 @@ Using library ESP32Time version 2.0.1 in folder "file:///c:/Users/iansc/Document
 Using library ESP_Telnet version 2.1.2 in folder "file:///c:/Users/iansc/Documents/Arduino/libraries/ESP_Telnet"
 Using library WiFi version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFi"
 Using library HTTPClient version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/HTTPClient"
-Using library WiFiClientSecure version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFiClientSecure"<br>
+Using library WiFiClientSecure version 2.0.0 in folder "file:///c:/Users/iansc/AppData/Local/Arduino15/packages/esp32/hardware/esp32/2.0.13/libraries/WiFiClientSecure"
+<br><br>
 Add all of the files in the /images directory to the root of a FAT32 formatted SD Card.
 Before bulding the app, open ESP_Telnet.cpp and change the SSID and PSWD data to match your router.<br>
 <br><br>
