@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include <string>
 #include <assert.h>
 #include <cstdlib>
 #include <setjmp.h>
@@ -16,7 +17,8 @@ int kbdelay = 0;
 int clkdelay = 0;
 uint64_t systime,nowtime,clkdiv;
 ESP32Time SystemTime;
-int runFlag = 0;
+int runFlag = 0, btcntr = 0;
+float btlvl;
 
 
 void setup( char *rkfile, char *rlfile, int bootdev)
@@ -48,6 +50,9 @@ void loop() {
 }
 
 void loop0() {
+    char bbfr[32];
+
+    M5.Lcd.setTextColor(TFT_ORANGE, TFT_BLACK);
     while (true) {
         if ((cpu.itab[0].vec > 0) && (cpu.itab[0].pri > cpu.priority())) {
             cpu.trapat(cpu.itab[0].vec);
@@ -64,6 +69,14 @@ void loop0() {
             kbdelay = 0;
             nowtime = SystemTime.getMillis();
             M5.update();
+            if (btcntr++ == 500) {
+                btcntr = 0;
+                btlvl = M5.Axp.GetBatteryLevel();
+                sprintf(bbfr, "%3d%%", (int)btlvl);
+                M5.Lcd.fillCircle(160, 165, 30, GREEN);
+                M5.Lcd.setCursor(135, 170);
+                M5.Lcd.print(bbfr);
+            }
         }
         if (nowtime-systime > 20) {
             cpu.unibus.kw11.tick();

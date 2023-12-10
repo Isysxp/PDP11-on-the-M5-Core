@@ -82,8 +82,8 @@ void eventDisplay(Event& e) {
 }
 
 void setup() {
-	char* bfr, rkfile[32], rlfile[32];
-	int bootdev = 0;
+	char *bfr, rkfile[32], rlfile[32],bbfr[32];
+	int bootdev = 0, btlvl;
 
 	M5.begin();
 	Serial.begin(115200);
@@ -121,6 +121,10 @@ void setup() {
 	M5.Lcd.print("Image: ");
 	M5.Lcd.print(Fnames[SelFile].c_str());
 	M5.Lcd.fillCircle(160, 165, 30, DARKGREY);
+	btlvl = M5.Axp.GetBatteryLevel();
+	sprintf(bbfr, "%3d%%", (int)btlvl);
+	M5.Lcd.setCursor(135, 170);
+	M5.Lcd.print(bbfr);
 	Serial.printf("Enter index of RK05 image:");
 	bfr = ReadLine(true, '\r');
 	if (bfr[0] != '$') {
