@@ -55,3 +55,14 @@ Login with root or if you really think you can cut it ... with ken!!!! Also, loo
 Have fun,<br>
 Ian Schofield
 October 2023
+<br>
+<br>
+In the meanwhile, I have been advised that building this app using the Arduino IDE throws lost of errors. This is due to
+the c standard set in the M5Core board support package. To correct this, find the platform.txt file in the Arduino packages
+directory (Arduino15\packages\m5stack\hardware\esp32\2.1.1) and change the line '-std=gnu++11' to '-std=gnu++17'.
+The app should now build without errors!<br>
+
+Ian Schofield
+April 2024
+<br>
+
