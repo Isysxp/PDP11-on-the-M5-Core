@@ -19,6 +19,7 @@ uint64_t systime,nowtime,clkdiv;
 ESP32Time SystemTime;
 int runFlag = 0, btcntr = 0;
 float btlvl;
+int RLTYPE;
 
 
 void setup( char *rkfile, char *rlfile, int bootdev)
@@ -28,6 +29,9 @@ void setup( char *rkfile, char *rlfile, int bootdev)
 		return;
   cpu.unibus.rk11.rk05 = SD.open(rkfile,"rb+");
   cpu.unibus.rl11.rl02 = SD.open(rlfile,"rb+");
+  RLTYPE = 035;
+  if (strcasestr(rlfile, ".rl02"))
+      RLTYPE = 0235;
   clkdiv = (uint64_t)1000000 / (uint64_t)60;
   systime = SystemTime.getMillis();
 	cpu.reset(02002,bootdev);
@@ -63,13 +67,13 @@ void loop0() {
            cpu.step();
         cpu.unibus.rk11.step();
         cpu.unibus.rl11.step();
-        if (kbdelay++ == 2000) {
+        if (kbdelay++ == 1000) {
             cpu.unibus.cons.poll();
             cpu.unibus.dl11.poll();
             kbdelay = 0;
             nowtime = SystemTime.getMillis();
             M5.update();
-            if (btcntr++ == 500) {
+            if (btcntr++ == 1000) {
                 btcntr = 0;
                 btlvl = M5.Axp.GetBatteryLevel();
                 sprintf(bbfr, "%3d%%", (int)btlvl);

@@ -45,6 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "kb11.h"
 extern KB11 cpu;
 extern uint64_t systime;
+extern int RLTYPE;
 
 // This is not good. The conversion of RLDA to a Simh disk image file address is obscure
 
@@ -176,10 +177,15 @@ void RL11::step()
     }
 
 retry:
-    int32_t pos = GET_DA(RLDA) * 256;
+    int32_t pos;
     int32_t maxwc = (RL_NUMSC - GET_SECT(RLDA)) * RL_NUMWD;
     int16_t wc = 0200000 - RLMP;
     digitalWrite(B_LED, HIGH);
+
+    if (RLTYPE == 0235)
+        pos = GET_DA(RLDA) * 256 + RLUNIT * 10486272l;      // Size of RL02
+    else
+        pos = GET_DA(RLDA) * 256 + RLUNIT * 5243392l;       // Size of RL01
 
     if (wc > maxwc)                                         /* Will there be a track overrun? */
         wc = maxwc;
@@ -244,6 +250,7 @@ void RL11::write16(uint32_t a, uint16_t v)
     case DEV_RL_CS:  // Control Status
         RLBA = (RLBA & 0xFFFF) | ((v & 060) << 12);
         RLCS = ((RLCS & 0176001) ^ (v & ~0176001));
+        RLUNIT = (RLCS & 01400) >> 8;
         //Serial.printf("RLCS:%06o\r\n", (RLCS & 016)>>1);
         if ((RLCS & 0200) == 0)                // CRDY cleared
         {
@@ -256,7 +263,7 @@ void RL11::write16(uint32_t a, uint16_t v)
             case 2:                     // Get status
                 RLCS &= 01777;          // Clear error flags
                 if (RLDA & 2) {         // Do get status
-                    RLMP = dtype;        // Heads out/On track/RL02
+                    RLMP = RLTYPE;        // Heads out/On track/RL02
                     rlready();          // Immediate ready
                 }
                 break;
@@ -304,11 +311,8 @@ void RL11::reset()
     RLBA = 0;
     RLDA = 0;
     RLMP = 0;
+    RLUNIT = 0;
     drun = 0;
-    dtype = 035;           // RL01
-    if (rl02.size() > 6000000)
-//    if (f_size(&rl02) > 6000000)
-        dtype = 0235;         // RL02
 }
 
 
