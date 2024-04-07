@@ -23,8 +23,13 @@ Tap select until you find the disk image you have just created and click Boot
 You should now be able to use DL1: as well as DL0: with RT11.
 
 Ultrix: All of the above applies to the Ultrix.rl02 image in that this contains 2 RL02 volumes.
-This version is the last of the 18 bit compatible Unices and needs 2 RL02s! The imprtant fact about this distro
+This version is the last of the 18 bit compatible Unices and needs 2 RL02s! The important fact about this distro
 is to type ^D (ctrl-d) at the first # prompt. This will start multi-user mode and you can connect
 a second terminal via 'telnet m5pdp11' (port 23). Login as root ... no password required.
 I would say that this distro is more of interest than utility ... it is not quite BSD. For example
-vi will not run as the app space is only 64K (no I/D split for the emulated PDP11).
+vi will not run as the app space is only 64K (no I/D split for the emulated PDP11). Nonetheless, it
+clearly demonstrates that not much has changed at the Unix console since it arrived 40 years ago!
+Finally, this close the gap between the low end operating systems and the next step which is BSD.
+If you wish to get BSD running on the ESP32 have a look at https://github.com/Spritetm/esppdp
+or https://github.com/Isysxp/esppdp (for use with the latest ESP-IDF).
+
