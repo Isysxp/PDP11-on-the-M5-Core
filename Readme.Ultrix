@@ -1,0 +1,31 @@
+This update now includes a multi-volume ULTRIX-11 RL02 image.<br>
+Also, I have updated the RT11 image which contains Multi-User Basic (MUBAS.SAV and MUBASX.SAV)<br>
+The RL01/02 code has been updated to allow for multi-volume images. The drive type is now
+extracted from the image filename on the SDCard.<br>
+To create multi-volume images requires SIMH to build formatted RL01/02 images:<br>
+Create a working volume of your favourite OS in Simh eg Use RT11_V5_MUBasic.RL01 for a test.<br>
+Set the CPU to an 11/34  'set cpu 11/34'<br>
+Attach the working volume to rl0  'att rl0 RT11_V5_MUBasic.RL01' (Simh will set device to RL01)<br>
+Set the Simh volume type to RL01 'set rl1 rl01'<br>
+Create a new blank volume. 'att rl1 blank.dsk' (Overwrite last track ... Y) <br>
+Boot the OS. 'boot rl0'<br>
+At the RT11 '.' prompt type 'init dl1:'<br>
+If you are a hardened RT11/Simh user, attach other volumes and copy stuff to DL1:<br>
+Exit from Simh '^e' and then 'bye'<br>
+Check the file size of blank.dsk. it should be 5243392 bytes.<br>
+Next I suggest you use HxD (https://mh-nexus.de/en/downloads.php?product=HxD20)<br>
+In the tool->file tools is a concatenate option. Add your working volume and then blank.dsk and create another disk image.<br>
+Make sure the final disk image has a .RL01 extension.<br>
+Copy this to the SDCard and power up the M5PDP11.<br>
+Telnet to the M5PDP11 console port. 'telnet m5pdp11 2000'<br>
+Tap select until you find the disk image you have just created and click Boot<br>
+You should now be able to use DL1: as well as DL0: with RT11.<br>
+<br>
+Ultrix: All of the above applies to the Ultrix.rl02 image in that this contains 2 RL02 volumes.<br>
+This version is the last of the 18 bit compatible Unices and needs 2 RL02s! The imprtant fact about this distro
+is to type ^D (ctrl-d) at the first # prompt. This will start multi-user mode and you can connect
+a second terminal via 'telnet m5pdp11' (port 23). Login as root ... no password required.
+I would say that this distro is more of interest than utility ... it is not quite BSD. For example
+vi will not run as the app space is only 64K (no I/D split for the emulated PDP11).
+
+
