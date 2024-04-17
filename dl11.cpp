@@ -60,7 +60,7 @@ void DL11::poll() {
 			if (_kbhit() || keypressed) {
 				char ch = serial_getchar();
 				count = 0;
-				if (true) {
+				if (ch) {
 					rbuf = ch & 0x7f;
 					rcsr |= 0x80;
 					if (rcsr & 0x40) {
@@ -125,7 +125,8 @@ void DL11::write16(uint32_t a, uint16_t v) {
 			break;
 		case 06:
 		xbuf = v & 0x7f;
-		serial_putchar(v & 0x7f);
+		if (xbuf)
+			serial_putchar(v & 0x7f);
 		xbuf |= 0200; // Allow for nulls !!!!
 		xcsr &= ~0x80;
 		iflag = 0;

@@ -130,7 +130,8 @@ void KL11::write16(uint32_t a, uint16_t v)
 		break;
 	case 0777566:
 		xbuf = v & 0x7f;
-		serial_putchar(xbuf);
+		if (xbuf)
+			serial_putchar(xbuf);
 		xbuf |= 0200; // Allow for nulls !!!!
 		xcsr &= ~0x80;
 		iflag = 0;
