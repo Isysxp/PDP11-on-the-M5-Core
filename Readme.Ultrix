@@ -27,7 +27,7 @@ The Ultrix-V2-Full.rl02 version is the last of the 18 bit compatible Unices and 
 is to type ^D (ctrl-d) at the first # prompt. This will start multi-user mode and you can connect
 a second terminal via 'telnet m5pdp11' (port 23). Login as root ... no password required. In this version vi works. You can
 login as user:niss1 pass:user01 to find a tiny c test programme and edit it with vi.
-Ultrix-V3.rl02: I would say that this distro is more of interest than utility ... it is not quite BSD.<br> For example
+Ultrix-V3.rl02: I would say that this distro is more of interest than utility ... it is not quite BSD.
 vi will not run as the app space is only 64K (no I/D split for the emulated PDP11). Nonetheless, it
 clearly demonstrates that not much has changed at the Unix console since it arrived 40 years ago!
 Finally, this closes the gap between the low end operating systems and the next step which is BSD.
