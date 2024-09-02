@@ -11,7 +11,7 @@
 const uint32_t IOBASE_18BIT = 0760000;
 const uint32_t IOBASE_22BIT = 017760000;
 
-const uint32_t MEMSIZE22 = (512) * 1024;
+const uint32_t MEMSIZE22 = (2048) * 1024;
 const uint32_t MEMSIZE = (256 - 8) * 1024;
 
 class UNIBUS {

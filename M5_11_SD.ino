@@ -114,6 +114,8 @@ void setup() {
 	Serial.printf("Total heap: %d\r\n", ESP.getHeapSize());
 	Serial.printf("Free heap: %d\r\n", ESP.getFreeHeap());
 	Serial.printf("Alloc heap: %d\r\n", ESP.getMaxAllocHeap());
+	Serial.printf("Total PSRAM: %lu\r\n", ESP.getPsramSize());
+	Serial.printf("Free PSRAM: %lu\r\n", ESP.getFreePsram());
 	TStart();
 	listDir(SD, "/", 3);
 	M5.Lcd.setTextColor(TFT_WHITE, TFT_BLACK);
