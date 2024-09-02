@@ -36,3 +36,10 @@ Finally, this closes the gap between the low end operating systems and the next 
 If you wish to get BSD running on the ESP32 have a look at https://github.com/Spritetm/esppdp
 or https://github.com/Isysxp/esppdp (for use with the latest ESP-IDF). This is a SIMH port to the ESP32.
 
+Sept 2024
+
+I have now updated the app to 22 bit addressing with a non split I/D space. This allows for sufficient memory
+to run vi under Ultrix 3.1. An RL02 image can be found in the images directory (Ultrix_V3_UX24.rl02). As above, this is pretty close
+to BSD 2.9. This is the last version of Ultrix that will run on a PDP11 (not sure if 3.2 ever existed). Versions above
+this eg 4.x, need a VAX to run.
+
