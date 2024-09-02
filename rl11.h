@@ -53,8 +53,7 @@ void loadboot();
 private:
     uint16_t drive, drun;
     uint16_t RLWC, RLDA, RLMP, RLCS, RLBAE, RLUNIT;
-    uint32_t RLBA;
-    uint16_t bcnt;
+    uint32_t RLBA, RLBA22;
 
 #define BOOT_START      02000                           /* start */
 #define BOOT_ENTRY      (BOOT_START + 002)              /* entry */

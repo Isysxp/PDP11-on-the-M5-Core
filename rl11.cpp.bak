@@ -191,6 +191,10 @@ retry:
     // Serial.printf("Disk: Loc:%08o WC:%06o BA:%08o\r\n", GET_DA(RLDA) * 256, wc,RLBA);
     if (!rl02.seek(pos))
         Serial.printf("RL02: Seek fail\r\n");
+//	if (FR_OK != (f_lseek(&rl02, pos))) {
+//        Serial.printf("%% rlstep: failed to seek\r\n");
+//        while (1);
+//    }
     uint16_t i=0;
     uint16_t val;
     RLBA22 = cpu.unibus.remap(RLBA);
@@ -199,11 +203,15 @@ retry:
         if (w)
         {
             val = cpu.unibus.read16(RLBA22);
+            //fwrite(&val, 2, 1, rldata);
             rl02.write((uint8_t*)&val, 2);
+            //f_write(&rl02,&val,2,&bcnt);
         }
         else
         {
             rl02.read((uint8_t*)& val, 2);
+            //f_read(&rl02,&val,2,&bcnt);
+            //fread(&val, 2, 1, rldata);
             cpu.unibus.write16(RLBA22, val);
         }
         RLBA += 2;
@@ -218,7 +226,10 @@ retry:
         if (i)
             for (i=i;i<256;i++)
                 rl02.write((uint8_t*)&val, 2);
+                //f_write(&rl02,&val,2,&bcnt);
+    //f_sync(&rl02);
     rl02.flush();
+    //fflush(rldata);
     }
     if (RLMP) {                         // Has RLMP (WC) gone to zero. If not, move to next track and continue
         RLDA = (RLDA + 0100) & ~077;
@@ -261,12 +272,10 @@ void RL11::write16(uint32_t a, uint16_t v)
                 rlready();
                 break;
             case 4:                     // Read header
-                RLMP = RLDA;
                 rlready();
                 break;
             case 5:
             case 6:                    // Read or Write
-                RLBA = (RLBA & 0xFFFF) | ((v & 060) << 12);
                 RLWC = RLMP;
                 drun = 100;             // Defer xfer by 100 cpu cycles
                 RLCS &= ~1;            // Clear Ready

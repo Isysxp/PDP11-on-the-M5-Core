@@ -25,13 +25,10 @@ void KW11::write16(uint32_t a, uint16_t v) {
 }
 
 uint16_t KW11::read16(uint32_t a) {
-    uint16_t cxsr;
     switch (a) {
     case 0777546:
         // Serial.printf("kw11: csr read %06o\n", csr);
-        cxsr = csr;
-        csr &= ~0200;
-        return cxsr;
+        return csr;
     default:
         Serial.printf("kw11: read from invalid address %06o\n", a);
         trap(INTBUS);

@@ -39,33 +39,54 @@ void KB11::reset(uint16_t start,int bootdev) {
 }
 
 inline uint16_t KB11::read16(const uint16_t va) {
-    const auto a = mmu.decode<false>(va, currentmode());
+    uint32_t tm;
+    auto a = tm = mmu.decode<false>(va, currentmode());
+
+    if (!(mmu.SR[3] & 020))
+        a |= 017000000;
+
+    if ((a & 017777760) == 017777700)
+        return R[(a & 017) >> 1];
+
     switch (a) {
-    case 0777776:
+    case 017777776:
         return PSW;
-    case 0777774:
+    case 017777774:
         return stacklimit;
-    case 0777570:
+    case 017777570:
         return switchregister;
     default:
-        return unibus.read16(a);
+        return unibus.read16(tm);
     }
 }
 
 inline void KB11::write16(const uint16_t va, const uint16_t v) {
-    const auto a = mmu.decode<true>(va, currentmode());
+    uint32_t tm;
+    auto a = tm = mmu.decode<true>(va, currentmode());
+
+    if (!(mmu.SR[3] & 020))
+        a |= 017000000;
+
+    if ((a & 017777760) == 017777700)
+    {
+        R[(a & 017) >> 1] = v;
+        return;
+    }
+
     switch (a) {
-    case 0777776:
-        writePSW(v);
+    case 017777776:
+        stackpointer[currentmode()] = R[6];
+        writePSW(v & ~020);
+        R[6] = stackpointer[currentmode()];
         break;
-    case 0777774:
+    case 017777774:
         stacklimit = v;
         break;
-    case 0777570:
+    case 017777570:
         displayregister = v;
         break;
     default:
-        unibus.write16(a, v);
+        unibus.write16(tm, v);
     }
 }
 

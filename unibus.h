@@ -9,7 +9,10 @@
 #include <stdint.h>
 
 const uint32_t IOBASE_18BIT = 0760000;
-const uint32_t MEMSIZE = (256-8) * 1024;
+const uint32_t IOBASE_22BIT = 017760000;
+
+const uint32_t MEMSIZE22 = (512) * 1024;
+const uint32_t MEMSIZE = (256 - 8) * 1024;
 
 class UNIBUS {
 
@@ -25,7 +28,9 @@ class UNIBUS {
 
     void write16(uint32_t a, uint16_t v);
     uint16_t read16(uint32_t a);
+    uint32_t umap[32];
 
     void reset();
+    uint32_t remap(uint32_t);
 
 };

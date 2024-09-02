@@ -11,8 +11,6 @@ class KT11 {
 
     template <bool wr>
     inline uint32_t decode(const uint16_t a, const uint16_t mode) {
-        uint16_t amsk = SR[3] & 020?0177777 : 07777;
-
         if ((SR[0] & 1) == 0) {
             if (SR[3] & 20)
                 return a > 0157777 ? ((uint32_t)a) + 017600000 : a;
@@ -83,4 +81,5 @@ class KT11 {
     };
 
     std::array<std::array<struct page, 16>, 4> pages;
+    void dumppages();
 };
