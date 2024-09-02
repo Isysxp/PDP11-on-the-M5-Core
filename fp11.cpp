@@ -856,8 +856,12 @@ t_bool ReadFP(fpac_t* fptr, int32 VA, int32 spec, int32 len)
 
 void WriteI(int32 data, int32 VA, int32 spec, int32 len)
 {
-    cpu.write16(VA, data);
-    return;
+    if ((len == WORD) || (spec == 027)) {
+        WriteW((data >> 16) & 0177777, VA);
+        return;
+    }
+    PWriteW((data >> 16) & 0177777, VA);
+    PWriteW(data & 0177777, VA + 2);
 }
 
 /* Write floating result
