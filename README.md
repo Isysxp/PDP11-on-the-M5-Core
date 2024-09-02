@@ -65,4 +65,14 @@ The app should now build without errors!<br>
 Ian Schofield
 April 2024
 <br>
+<br>
+The app has now been updated to support 22 bit addressing with a non split I/D space. the nearest equivalent system<br>
+is an 11/24. The memory size is set to 2M in unibus.h. This may be extended up to at least 3M bytes which is less than the amount of<br>
+free PSRAM attached to the ESP32. An updated version of ULTRIX 3.1 has been included in the images directory. This has<br>
+been sysgened for an 11/24 with an FP11 FPU and 2 additional DL lines. This is very easy to do using sysgen in the /usr/sys/conf directory.<br>
+This image includes f77 and the man system along with most well recognised utilties.<br>
+<br>
+Ian Schofield
+Sept 2024
+<br>
 
