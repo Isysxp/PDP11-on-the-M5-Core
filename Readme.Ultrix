@@ -38,8 +38,15 @@ or https://github.com/Isysxp/esppdp (for use with the latest ESP-IDF). This is a
 
 Sept 2024
 
-I have now updated the app to 22 bit addressing with a non split I/D space. This allows for sufficient memory
+I have now updated the app to 22 bit addressing with a non split I/D space and a KT24 unibus map. This allows for sufficient memory
 to run vi under Ultrix 3.1. An RL02 image can be found in the images directory (Ultrix_V3_UX24.rl02). As above, this is pretty close
 to BSD 2.9. This is the last version of Ultrix that will run on a PDP11 (not sure if 3.2 ever existed). Versions above
 this eg 4.x, need a VAX to run. The install tape can be found at: http://www.bitsavers.org/bits/DEC/pdp11/magtapes/ultrix-11/
+It is also relevant to note that BSD 2.9 will now run on this app as it supports non-split I/D mapping. However, the available
+tapes contain the entire source tree which is uploaded to the /usr mounted device. This requires at least 30-40 Mbyte
+of disk space. Obviously it would be possible to extract some key directories onto a second RL02 and stay within the 10 Mbyte limit.
+However running BSD 2.9 and above really requires a network interface. Jeroen Domburg (spritetm) has implemented this for the ESP32
+wifi with an interface to a simh DEQNA device which is really cool. This works really well with the BSD 2.11 image he has built for
+the esppdp app. So for anything beyond Ultrix 3.1, I would really recommmend a look at this app as it can run OSs other than
+BSD 2.11 that may be built under simh. The next step would then be a VAX implementation for the ESP32!!!!!
 
